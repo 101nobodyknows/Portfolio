@@ -1,0 +1,25 @@
+# Virtual environment
+venv/
+e-comm/
+
+# Python
+*.pyc
+__pycache__/
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Windows
+thumbs.db
