@@ -1,0 +1,294 @@
+{% extends 'ayokunnu/base.html' %}
+{% load static %}
+{% block title %}My Portfolio - Abiola Ayokunnu{% endblock %}
+{% block content %}
+<!-- header -->
+<div id="header">
+    <a href="">
+        <span class="logo ">Ayo</span>
+    </a>
+    <div class="navbar">
+        <ul class="ul">
+            <div class="ul-overlay"></div>
+            <span class="removed"><i class="fa-solid fa-xmark"></i></span>
+            <li><a href="#" class="main">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#port">Services</a></li>
+            <li><a href="#test">Testimonies</a></li>
+            <li class="d-none d-lg-block"><a href="#blog">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="bug">
+            <span class="harmbugger"><i class="fa-solid fa-bars"></i></span>
+        </div>
+    </div>
+</div>
+
+<!-- main header -->
+<div class="main-header">
+    <h1 class="up">Hey there!</h1>
+    <div class="divider">
+        <h1 class="down">I am Abiola</h1>
+        <h1 class="downs">Ayokunnu</h1>
+    </div>
+    <h2 class="full">Fullstack Web Developer</h2>
+    <div class="iconss">
+        <a target="_blank" title="Text me on Whatsapp" href="https://wa.me/7044584688"><i class="fa-brands fa-whatsapp"></i></a>
+        <a target="_blank" title="Follow me on X" href="https://www.twitter.com/a_y_o_1o1"><i class="fa-brands fa-x-twitter"></i></a>
+        <a target="_blank" title="Follow me on Instagram" href="https://instagram.com/a_y_o_1o1?igshid=NGVhN2U2NjQ0Yg=="><i class="fa-brands fa-instagram"></i></a>
+        <a target="_blank" title="Send me an Email" href="mailto:abiolaayokunnu101@gmail.com"><i class="fa fa-envelope"></i></a>
+    </div>
+    <a href="{% url 'project' %}" class="button" title="My Gallery">Visit My Gallery</a>
+</div>
+
+<!-- about -->
+<div class="about" id="about">
+    <div class="img">
+        <a target="_blank" href="{{about.my_img}}"><img src="{{about.my_img}}"></a>
+    </div>
+    <div class="content">
+        <p>Who Am I?</p>
+        <h1>About Me</h1>
+        <p class="para">{{about.my_desc}}</p>
+        <h1>Interests:</h1>
+        <div class="interest">
+            <p class="interests"><i class="fa-solid fa-music"></i>&nbsp;Music</p>
+            <p class="interests"><i class="fa-solid fa-film"></i>&nbsp;Anime</p>
+            <p class="interests"><i class="fa-solid fa-laptop"></i>&nbsp;IT</p>
+            <p class="interests"><i class="fa-solid fa-location"></i>&nbsp;Tourism</p>
+        </div>
+    </div>
+</div>
+
+<!-- education -->
+<div class="aos">
+    <div class="contents">
+        <h1>Education</h1>
+    </div>
+    <div class="row mt-1 g-5">
+        {% for edu in edu_list %}
+        <div class="col-lg-6">
+            <div class="rounded-2 bg-none shadow border border-secondary border-2 p-3 pb-0 position-relative">
+                <p class="h5 fw-bold"><i class="fa fa-location-dot" style="color: #0707c7;"></i>&nbsp; {{ edu.location }}</p>
+                <p class="h6 fw-bold"><i class="fa-solid fa-book-open-reader" style="color: #0707c7;"></i>&nbsp; {{ edu.cert }}</p>
+                <p><small class="text-light"><i class="fa-regular fa-calendar-days" style="color: #0707c7;"></i>&nbsp; {{ edu.start_date }} - {% if edu.start_date == edu.end_date %}Till Date{% else %}{{ edu.end_date }}{% endif %}</small></p>
+                <i class="fa-solid fa-check-to-slot position-absolute top-0 end-0 p-3"></i>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- aos -->
+<div class="aos">
+    <div class="contents">
+        <h1>My Areas of Specialization</h1>
+    </div>
+    <div class="aos-con row g-4 mt-2">
+        <div class="col-lg-6 col-md-6">
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <p class="special-name">Javascript</p>
+                    <p class="load-percent">83%</p>
+                </div>
+                <div class="active-load">
+                    <div class="loader-load"><div class="loading js"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <p class="special-name">CSS</p>
+                    <p class="load-percent">90%</p>
+                </div>
+                <div class="active-load">
+                    <div class="loader-load"><div class="loading css"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <p class="special-name">HTML</p>
+                    <p class="load-percent">95%</p>
+                </div>
+                <div class="active-load">
+                    <div class="loader-load"><div class="loading html"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <p class="special-name">IT</p>
+                    <p class="load-percent">72%</p>
+                </div>
+                <div class="active-load">
+                    <div class="loader-load"><div class="loading it"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <p class="special-name">Graphics/UI/UX</p>
+                    <p class="load-percent">90%</p>
+                </div>
+                <div class="active-load">
+                    <div class="loader-load"><div class="loading graphics"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <p class="special-name">Python</p>
+                    <p class="load-percent">88%</p>
+                </div>
+                <div class="active-load">
+                    <div class="loader-load"><div class="loading python"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--- services -->
+<div class="port" id="port">
+    <div class="contents">
+        <p>What I Offer?</p>
+        <h1>Services</h1>
+    </div>
+    <div class="Portfolio-1">
+        <div class="min">
+            <div class="overley-1"></div>
+            <div class="box-1">
+                <div class="one">
+                    <div class="icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h1>Web Development</h1>
+                    <span>Versatile web developer crafting seamless online experiences with code and creative finesse.</span>
+                </div>
+            </div>
+        </div>
+        <div class="min">
+            <div class="overley-1"></div>
+            <div class="box-1">
+                <div class="one">
+                    <div class="icon">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+                    <h1>Software Development</h1>
+                    <span>Excellent software developer combines creativity, precision, adaptability, and problem-solving.</span>
+                </div>
+            </div>
+        </div>
+        <div class="min">
+            <div class="overley-1"></div>
+            <div class="box-1">
+                <div class="one">
+                    <div class="icon">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <h1>Graphics Design</h1>
+                    <span>Graphics designer crafting visual narratives with creativity, precision, and aesthetic flair.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--hire-->
+<div class="hire">
+    <div class="hire-divi">
+        <div class="hire-1">
+            <p class="p">Interested in working with me?</p>
+            <p >I'm always ready to serve all clients</p>
+        </div>
+        <button onclick="eMail()" class="button-2">Send an Email</button>
+    </div>
+</div>
+
+<!--testimonial-->
+<div class="Testimonial" id="test">
+    <div class="contents">
+        <p>What clients think about me?</p>
+        <h1>Testmonial</h1>
+    </div>
+    <div class="divi-box">
+        <div class="boxes">
+            <div class="boxe">
+                <p>Ayokunnu's graphic design prowess exceeded my expectations, transforming my vision into stunning visuals. Impeccable attention to detail and a creative flair make Abiola a standout graphics designer.</p>
+                <span>Abiola Ismail</span>
+            </div>
+            <div class="image">
+                <img src="{% static 'imgs/test1.jpg' %}" class="border-light border-2 border">
+            </div>
+        </div>
+        <div class="boxes">
+            <div class="boxe">
+                <p>Working with Ayokunnu, a skilled graphic and web designer, brought seamless, innovative designs and prompt delivery. His expertise elevated my project to new heights through a collaborative approach.</p>
+                <span>Sampson Victor</span>
+            </div>
+            <div class="image">
+                <img src="{% static 'imgs/test2.jpg' %}" class="border-light border-2 border">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- gallery -->
+<div class="blog d-lg-block d-none" id="blog">
+    <div class="contents">
+        <p>Some of my works?</p>
+        <h1>Gallery</h1>
+    </div>
+    <div class="display-area rounded-1">
+        <div class="cards-wrapper">
+            <div class="card"><img src="{% static 'imgsl/img1.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img2.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img3.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img4.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img5.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img6.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img7.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img8.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img9.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img10.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img11.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img12.jpg' %}" alt=""></div>
+            <div class="card"><img src="{% static 'imgsl/img13.jpg' %}" alt=""></div>
+        </div> 
+    </div>
+    <!-- buttons -->
+    <div class="dots-wrapper">
+        <button class="dot active"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot rdot"></button>
+    </div>
+</div>
+
+<!--contact -->
+<div class="contact" id="contact">
+    <div class="contents">
+            <p>How can you get to me easily</p>
+            <h1>Contact Me</h1>
+    </div>
+    <form action="{% url 'message_sent' %}" method="post">
+        {% csrf_token %}
+        <div class="form-1">
+            <input type="name" name="name" placeholder ="Name" class="name rounded-2 p-2" required>
+            <input type="email" name="email"placeholder="Email" class="name rounded-2 p-2" required>
+        </div>
+        <textarea name="message" rows="6" cols="40" placeholder="Enter your message here" class="mt-2 rounded-2 p-2" required></textarea>
+        <input type="submit" value="Submit" class="button-3">
+    </form>
+    <div class="mt-4">
+        <p class="text-white">Call, SMS or Whatsapp: +2347044584688</p>
+        <a href="tel:07044584688" class="button-4"><i class="fa-solid fa-phone"></i>&nbsp;Click to call</a>
+    </div>
+</div>
+{% endblock %}

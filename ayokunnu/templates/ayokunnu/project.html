@@ -1,0 +1,93 @@
+{% extends 'ayokunnu/base.html' %}
+{% load static %}
+<!-- head section -->
+{% block title %}My Portfolio - Gallery{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'Other/Style/project.css' %}">
+{% endblock %}
+
+<!-- body section -->
+{% block content %}
+<div id="header" class="p_head">
+      <div class="d-flex align-items-center">
+            <div class="bug mx-2">
+                  <span class="harmbugger"><i class="fa-solid fa-bars"></i></span>
+            </div>
+            <a href="#">
+                  <span class="logo">My Gallery</span>
+            </a>
+      </div>
+      <div class="navbar">
+            <ul class="ul mx-3">
+                <div class="ul-overlay"></div>
+                <span class="removed"><i class="fa-solid fa-xmark"></i></span>
+                <li><a href="{% url 'home' %}" class="main">Home</a></li>
+            </ul>
+            <div class="serach_field-area d-flex align-items-center">
+                  <div class="search_inner">
+                        <form action="{% url 'project' %}" method="get" class="mx-2 w-75">
+                              {% csrf_token %}
+                              <div class="search_field">
+                                    <input type="text" name="query" value="{% if query %}{{query}}{% else %}{% endif %}" placeholder="Search and press enter">
+                              </div>
+                              <button type="submit"> <i class="fa-solid fa-search text-white"></i> </button>
+                        </form>
+                  </div>
+            </div>
+      </div>
+</div>
+
+<!-- website -->
+<div class="container mt-lg-5 mt-md-5 mt-sm-4 mt-1">
+      {% if website_length != 0 %}
+      <p class="section-head text-center h1 fw-bold p-3">Websites</p>
+      <div class="row g-4">
+            {% for image in website_list %}
+            <div class="col-lg-6 col-md-6">
+                  <div class="g_img rounded-2">
+                        <img src="{{image.main_img.url}}" alt="" class="w-100" style="height: auto"/>
+                        <div class="overlay pt-3">
+                              <p class="fw-bold mt-5 mb-0 h5">{{image.img_name}}</p>
+                              <p class="mb-0 text-white">{{image.img_desc}}</p>
+                              <div class="d-flex w-100 mt-lg-1 align-items-center justify-content-between">
+                                    <div>
+                                          <a class="btn btn-primary fs-6 px-2 py-1" href="{% if image.img_link != '' %}{{image.image_link}}{% else %}{{ image.main_img.url }}{% endif %}" target="_blank"><small class="text-white">Open</small></a>
+                                    </div>
+                                    <div>
+                                          <a download="{{ image.main_img.url }}" class="btn btn-primary fs-6 p-1" href="#" target="_blank"><small><i class="fa-solid fa-download text-white mx-2"></i></small></a>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            {% endfor %}
+      </div>
+      {% endif %}
+</div>
+
+<!-- graphics -->
+<div class="container mt-lg-5 mt-md-5 mt-sm-4 mt-1">
+      {% if graphics_length != 0 %}
+      <p class="section-head text-center h1 fw-bold p-3">Graphics</p>
+      <ul class="image-gallery">
+            {% for image in graphics_list %}
+                  <li class="g_img rounded-2">
+                        <img src="{{image.main_img.url}}" alt="" class="w-100"/>
+                        <div class="overlay pt-3 w-100">
+                              <p class="fw-bold mt-5 mb-0 h5">{{image.img_name}}</p>
+                              <p class="mb-0 text-white">{{image.img_desc}}</p>
+                              <div class="d-flex w-100 mt-lg-1 align-items-center justify-content-between">
+                                    <div>
+                                          <a class="btn btn-primary fs-6 px-2 py-1" href="{% if image.img_link != '' %}{{image.image_link}}{% else %}{{ image.main_img.url }}{% endif %}" target="_blank"><small class="text-white">Open</small></a>
+                                    </div>
+                                    <div>
+                                          <a download="{{ image.main_img.url }}" class="btn btn-primary fs-6 p-1" href="#" target="_blank"><small><i class="fa-solid fa-download text-white mx-2"></i></small></a>
+                                    </div>
+                              </div>
+                        </div>
+                  </li>
+            {% endfor %}
+      </ul>
+      {% endif %}
+</div>
+{% endblock %}
