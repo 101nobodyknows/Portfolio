@@ -17,8 +17,8 @@
             <div>
                 <img src="{% static 'imgs/check2.svg' %}" style="width: 200px; height: 200px;" alt="Success">
             </div>
-            <h3 class="mt-4">{{user_message.name}}, your message has been submitted successfully.</h3>
-            <p class="mt-3">It will be looked through and replied via email({{user_message.email}}) within 24 hours.</p>
+            <h3 class="mt-4 text-white">{{user_message.name}}, your message has been submitted successfully.</h3>
+            <p class="mt-3 text-white">It will be looked through and replied via email({{user_message.email}}) within 24 hours.</p>
             <a href="{% url 'home' %}" class="button mt-2" title="Home">Back Home</a>
         </div>
     </section>
