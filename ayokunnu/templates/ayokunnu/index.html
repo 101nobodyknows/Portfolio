@@ -63,7 +63,7 @@
 <!-- education -->
 <div class="aos">
     <div class="contents">
-        <h1>Education</h1>
+        <h1>Education/Work Experience</h1>
     </div>
     <div class="row mt-1 g-5">
         {% for edu in edu_list %}
@@ -71,7 +71,7 @@
             <div class="rounded-2 bg-none shadow border border-secondary border-2 p-3 pb-0 position-relative">
                 <p class="h5 fw-bold"><i class="fa fa-location-dot" style="color: #0707c7;"></i>&nbsp; {{ edu.location }}</p>
                 <p class="h6 fw-bold"><i class="fa-solid fa-book-open-reader" style="color: #0707c7;"></i>&nbsp; {{ edu.cert }}</p>
-                <p><small class="text-light"><i class="fa-regular fa-calendar-days" style="color: #0707c7;"></i>&nbsp; {{ edu.start_date }} - {% if edu.start_date == edu.end_date %}Till Date{% else %}{{ edu.end_date }}{% endif %}</small></p>
+                <p class="text-light"><i class="fa-regular fa-calendar-days" style="color: #0707c7;"></i>&nbsp;<small class="text-light">{{ edu.start_date }}</small> - <small class="text-light edu_end_date">{{ edu.end_date }}</small></p>
                 <i class="fa-solid fa-check-to-slot position-absolute top-0 end-0 p-3"></i>
             </div>
         </div>

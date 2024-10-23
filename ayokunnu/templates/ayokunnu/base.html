@@ -30,6 +30,21 @@
         {% endblock %}
         {% include 'ayokunnu/includes/footer.html' %}
         <!-- javascript -->
+		 <script>
+			const edu_end_dates = document.querySelectorAll(".edu_end_date")
+
+			document.addEventListener('DOMContentLoaded', function () {
+				//get the current year
+				const currentYear = new Date().getFullYear();
+
+				//loop through the years
+				edu_end_dates.forEach(edu_end_date => {
+					if (edu_end_date.innerHTML == currentYear){
+						edu_end_date.innerHTML = "Till Date"
+					}
+				})
+			})
+		 </script>
 		<script src="{% static './Other/Javascript/data.js' %}"></script>
 		<script src="{% static './Other/Javascript/imgsl.js' %}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
