@@ -33,7 +33,6 @@ function eMail() {
 	window.open("mailto:abiolaayokunnu101@gmail.com", "_blank");
 }
 
-// When the user scrolls down 50px from the top of the document, show the button
 window.addEventListener("scroll", function(){
 	if(window.scrollY > 15 ){
 		navbar.classList.add("scrolled")
@@ -41,6 +40,3 @@ window.addEventListener("scroll", function(){
 		navbar.classList.remove("scrolled")
 	}
 })
-
-var x = window.matchMedia("(max-width: 420px)")
-myFunction(x) // Call listener function at run time

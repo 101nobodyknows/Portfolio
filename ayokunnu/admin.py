@@ -12,7 +12,7 @@ class EducationAdmin(admin.ModelAdmin):
     list_filter = ('cert',)
     
 class ImageGalleryAdmin(admin.ModelAdmin):
-    list_display = ('id','img_name', 'img_category', 'main_img')
+    list_display = ('id', 'img_category', 'main_img')
     search_fields = ('id', 'img_name', 'img_category')
     list_filter = ('img_category',)
     

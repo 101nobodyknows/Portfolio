@@ -1,11 +1,11 @@
 {% extends 'ayokunnu/base.html' %}
 {% load static %}
-{% block title %}My Portfolio - Abiola Ayokunnu{% endblock %}
+{% block title %}My Portfolio - {{about.name}}{% endblock %}
 {% block content %}
 <!-- header -->
 <div id="header">
     <a href="">
-        <span class="logo ">Ayo</span>
+        <span class="logo ">{{about.name}}</span>
     </a>
     <div class="navbar">
         <ul class="ul">
@@ -32,11 +32,13 @@
         <h1 class="downs">Ayokunnu</h1>
     </div>
     <h2 class="full">Fullstack Web Developer</h2>
+    <h2 class="full">Graphics/UI/UX Designer</h2>
     <div class="iconss">
-        <a target="_blank" title="Text me on Whatsapp" href="https://wa.me/7044584688"><i class="fa-brands fa-whatsapp"></i></a>
-        <a target="_blank" title="Follow me on X" href="https://www.twitter.com/a_y_o_1o1"><i class="fa-brands fa-x-twitter"></i></a>
-        <a target="_blank" title="Follow me on Instagram" href="https://instagram.com/a_y_o_1o1?igshid=NGVhN2U2NjQ0Yg=="><i class="fa-brands fa-instagram"></i></a>
-        <a target="_blank" title="Send me an Email" href="mailto:abiolaayokunnu101@gmail.com"><i class="fa fa-envelope"></i></a>
+        <a target="_blank" title="Follow on X" href="{{about.x_link}}"><i class="fa-brands fa-x-twitter"></i></a>
+        <a target="_blank" title="Follow on X" href="{{about.git_link}}"><i class="fa-brands fa-github"></i></a>
+        <a target="_blank" title="Follow on Instagram" href="{{about.insta_link}}"><i class="fa-brands fa-instagram"></i></a>
+        <a target="_blank" title="Send an Email" href="mailto:{{about.email}}"><i class="fa fa-envelope"></i></a>
+        <a target="_blank" title="Text me on Whatsapp" href="{{about.wa_link}}"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
     <a href="{% url 'project' %}" class="button" title="My Gallery">Visit My Gallery</a>
 </div>
@@ -44,7 +46,7 @@
 <!-- about -->
 <div class="about" id="about">
     <div class="img">
-        <a target="_blank" href="{{about.my_img}}"><img src="{{about.my_img}}"></a>
+        <a target="_blank" href="{{about.my_img.url}}"><img src="{{about.my_img.url}}"></a>
     </div>
     <div class="content">
         <p>Who Am I?</p>

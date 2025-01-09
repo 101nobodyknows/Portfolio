@@ -39,6 +39,7 @@
 
 <!-- website -->
 <div class="container mt-lg-5 mt-md-5 mt-sm-4 mt-1">
+{% if image_length >= 1 %}
       {% if website_length != 0 %}
       <p class="section-head text-center h1 fw-bold p-3">Websites</p>
       <div class="row g-4">
@@ -74,14 +75,13 @@
                   <li class="g_img rounded-2">
                         <img src="{{image.main_img.url}}" alt="" class="w-100"/>
                         <div class="overlay pt-3 w-100">
-                              <p class="fw-bold mt-5 mb-0 h5">{{image.img_name}}</p>
-                              <p class="mb-0 text-white">{{image.img_desc}}</p>
+                              <p class="mb-0 text-white h6">{{image.img_desc}}</p>
                               <div class="d-flex w-100 mt-lg-1 align-items-center justify-content-between">
                                     <div>
                                           <a class="btn btn-primary fs-6 px-2 py-1" href="{% if image.img_link != '' %}{{image.image_link}}{% else %}{{ image.main_img.url }}{% endif %}" target="_blank"><small class="text-white">Open</small></a>
                                     </div>
                                     <div>
-                                          <a download="{{ image.main_img.url }}" class="btn btn-primary fs-6 p-1" href="#" target="_blank"><small><i class="fa-solid fa-download text-white mx-2"></i></small></a>
+                                          <a href="{{ image.main_img.url }}" download="{{image.img_name}}" class="btn btn-primary fs-6 p-1" href="#" target="_blank"><small><i class="fa-solid fa-download text-white mx-2"></i></small></a>
                                     </div>
                               </div>
                         </div>
@@ -89,5 +89,8 @@
             {% endfor %}
       </ul>
       {% endif %}
+{% else %}
+<p class="section-head text-center h1 fw-bold p-3">Your search has no result.</p>
+{% endif %}
 </div>
 {% endblock %}

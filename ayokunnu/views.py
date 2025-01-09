@@ -49,6 +49,7 @@ def projects(request):
     random.shuffle(graphics_list)
     
     #taking the length of the lists
+    image_length = len(image_list)
     website_length = len(website_list)
     graphics_length = len(graphics_list)
     
@@ -58,6 +59,7 @@ def projects(request):
             'query':query,
             'website_list':website_list,
             'graphics_list':graphics_list,
+            'image_length':image_length,
             'website_length':website_length,
             'graphics_length':graphics_length
         }
@@ -65,6 +67,7 @@ def projects(request):
         context = {
             'website_list':website_list,
             'graphics_list':graphics_list,
+            'image_length':image_length,
             'website_length':website_length,
             'graphics_length':graphics_length
         }
