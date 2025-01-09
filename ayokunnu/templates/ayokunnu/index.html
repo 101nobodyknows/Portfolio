@@ -1,6 +1,9 @@
 {% extends 'ayokunnu/base.html' %}
 {% load static %}
-{% block title %}My Portfolio - {{about.name}}{% endblock %}
+{% block title %}Portfolio - {{about.name}}{% endblock %}
+{% block head %}
+    <link rel="icon" href="{{about.my_img.url}}" />
+{% endblock %}
 {% block content %}
 <!-- header -->
 <div id="header">
@@ -90,7 +93,7 @@
         <div class="col-lg-6 col-md-6">
             <div class="">
                 <div class="d-flex justify-content-between">
-                    <p class="special-name">Javascript</p>
+                    <p class="special-name">Django</p>
                     <p class="load-percent">83%</p>
                 </div>
                 <div class="active-load">
@@ -123,7 +126,7 @@
         <div class="col-lg-6 col-md-6">
             <div class="">
                 <div class="d-flex justify-content-between">
-                    <p class="special-name">IT</p>
+                    <p class="special-name">Javascript</p>
                     <p class="load-percent">72%</p>
                 </div>
                 <div class="active-load">

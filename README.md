@@ -1,8 +1,11 @@
-# My Portfolio Website
+# Portfolio Website
 
 **About Me**
 
-I'm a passionate web developer with a strong foundation in HTML, CSS, JavaScript, and Django. I specialize in creating visually appealing and functional websites that meet client needs. I'm also a well experienced graphics designer ready to bring your visual fantasies to reality with art and colour.
+A passionate web developer, graphics designer, and Web3 enthusiast from Nigeria. With a strong foundation in HTML, CSS, JavaScript, Bootstrap, and Django, I specialize in building visually appealing and functional websites that meet client needs. I’ve developed dynamic e-commerce platforms and created scalable backend systems using Django.
+As a skilled graphics designer, I bring visual fantasies to life through captivating designs that seamlessly combine art and color. In the Web3 space, I’m actively learning Solidity and exploring the integration of wallet connections and DApp interactions to build decentralized applications.
+I’ve also worked with Parrot Media Limited, managing content uploads and showcasing my ability to deliver creative and technical solutions in the media space.
+Let’s connect and create something amazing together!
 
 **Services Offered**
 

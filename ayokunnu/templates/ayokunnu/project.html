@@ -1,9 +1,10 @@
 {% extends 'ayokunnu/base.html' %}
 {% load static %}
 <!-- head section -->
-{% block title %}My Portfolio - Gallery{% endblock %}
+{% block title %}Portfolio - Gallery{% endblock %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'Other/Style/project.css' %}">
+    <link rel="icon" href="{{about.my_img.url}}" />
+    <link rel="stylesheet" href="{% static 'Other/Style/project.css' %}">
 {% endblock %}
 
 <!-- body section -->

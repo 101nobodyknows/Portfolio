@@ -17,6 +17,7 @@ def home(request):
 def projects(request):
     #getting the images
     images = image_gallery.objects.all()
+    about_list = list(about.objects.all())
     
     #search feature
     query = request.GET.get('query')
@@ -61,7 +62,8 @@ def projects(request):
             'graphics_list':graphics_list,
             'image_length':image_length,
             'website_length':website_length,
-            'graphics_length':graphics_length
+            'graphics_length':graphics_length,
+            'about':about_list
         }
     else:
         context = {
@@ -69,7 +71,8 @@ def projects(request):
             'graphics_list':graphics_list,
             'image_length':image_length,
             'website_length':website_length,
-            'graphics_length':graphics_length
+            'graphics_length':graphics_length,
+            'about':about_list
         }
     return render(request, 'ayokunnu/project.html', context)
 
