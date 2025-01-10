@@ -10,10 +10,12 @@ certifi==2024.7.4
 cffi==1.16.0
 charset-normalizer==3.3.2
 ckzg==2.0.1
+cloudinary==1.42.1
 cryptography==43.0.0
 cytoolz==1.0.0
 Django==5.0.6
 django-allauth==0.63.3
+django-cloudinary-storage==0.3.0
 django-crispy-forms==2.2
 django-environ==0.11.2
 django-jazzmin==3.0.0
@@ -38,11 +40,13 @@ payments==0.2
 phonenumbers==8.13.40
 pillow==10.3.0
 propcache==0.2.0
+psycopg2-binary==2.9.10
 pycparser==2.22
 pycryptodome==3.21.0
 pydantic==2.9.2
 pydantic_core==2.23.4
 PyJWT==2.8.0
+python-decouple==3.8
 pyunormalize==16.0.0
 regex==2024.9.11
 requests==2.32.3
