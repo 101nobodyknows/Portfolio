@@ -63,7 +63,7 @@ def projects(request):
             'image_length':image_length,
             'website_length':website_length,
             'graphics_length':graphics_length,
-            'about':about_list
+            'about':about_list[-1]
         }
     else:
         context = {
@@ -72,7 +72,7 @@ def projects(request):
             'image_length':image_length,
             'website_length':website_length,
             'graphics_length':graphics_length,
-            'about':about_list
+            'about':about_list[-1]
         }
     return render(request, 'ayokunnu/project.html', context)
 
