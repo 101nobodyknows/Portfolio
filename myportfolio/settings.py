@@ -33,8 +33,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='railway'),
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME', default='postgres'),
         'USER': config('DB_USER', default='postgres'),
         'PASSWORD': config('DB_PASSWORD', default='password'),
         'HOST': config('DB_HOST', default='localhost'),

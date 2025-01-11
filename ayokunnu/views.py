@@ -3,14 +3,19 @@ from .models import new_message, education, image_gallery, about
 from django.urls import reverse
 import random
 from django.db.models import Q
+from django.http import HttpResponse
+import requests
 
 #pages
 def home(request):
     edu_list = education.objects.all()
     about_list = list(about.objects.all())
+    default_about = ""
+
+    my_about = about_list[-1] if about_list else default_about
     context = {
         'edu_list':edu_list,
-        'about':about_list[-1]
+        'about':my_about
     }
     return render(request, 'ayokunnu/index.html', context)
 
@@ -18,6 +23,9 @@ def projects(request):
     #getting the images
     images = image_gallery.objects.all()
     about_list = list(about.objects.all())
+    default_about = ""
+
+    my_about = about_list[-1] if about_list else default_about
     
     #search feature
     query = request.GET.get('query')
@@ -63,7 +71,7 @@ def projects(request):
             'image_length':image_length,
             'website_length':website_length,
             'graphics_length':graphics_length,
-            'about':about_list[-1]
+            'about':my_about
         }
     else:
         context = {
@@ -72,7 +80,7 @@ def projects(request):
             'image_length':image_length,
             'website_length':website_length,
             'graphics_length':graphics_length,
-            'about':about_list[-1]
+            'about':my_about
         }
     return render(request, 'ayokunnu/project.html', context)
 
@@ -97,3 +105,24 @@ def message_sub(request, message_id):
         'user_message':user_message
     }
     return render(request, 'ayokunnu/success.html', context)
+
+#download system
+def download_file(request):
+    # Get the file_url from query parameters
+    file_url = request.GET.get('file_url')
+    if not file_url:
+        return HttpResponse("File URL is missing", status=400)
+
+    # Fetch the file from the provided URL
+    response = requests.get(file_url, stream=True)
+    if response.status_code != 200:
+        return HttpResponse("Error fetching the file", status=response.status_code)
+
+    # Force the filename to be "ay_react_gallery_image.jpg"
+    filename = "ay_react_img.jpg"
+
+    # Prepare the HTTP response with the forced filename and `.jpg` extension
+    download_response = HttpResponse(response.content, content_type="image/jpeg")
+    download_response['Content-Disposition'] = f'attachment; filename="{filename}"'
+
+    return download_response
