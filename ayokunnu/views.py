@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import new_message, education, image_gallery, about
+from .models import NewMessage, Education, ImageGallery, About
 from django.urls import reverse
 import random
 from django.db.models import Q
@@ -8,9 +8,10 @@ import requests
 
 #pages
 def home(request):
-    edu_list = education.objects.all()
-    about_list = list(about.objects.all())
+    edu_list = Education.objects.all()
+    about_list = list(About.objects.all())
     default_about = ""
+    edu_list.reverse()
 
     my_about = about_list[-1] if about_list else default_about
     context = {
@@ -21,8 +22,8 @@ def home(request):
 
 def projects(request):
     #getting the images
-    images = image_gallery.objects.all()
-    about_list = list(about.objects.all())
+    images = ImageGallery.objects.all()
+    about_list = list(About.objects.all())
     default_about = ""
 
     my_about = about_list[-1] if about_list else default_about
@@ -91,15 +92,15 @@ def sub_message(request):
         email = request.POST['email']
         message = request.POST['message']
         
-        NewMessage = new_message.objects.create(name=name, email=email, message=message)
-        NewMessage.save()
+        new_message = NewMessage.objects.create(name=name, email=email, message=message)
+        new_message.save()
         
-        message_id = NewMessage.id
+        message_id = new_message.id
         return redirect(reverse('message_submitted', kwargs={'message_id':message_id}))
     return render(request, 'ayokunnu/index.html')
 
 def message_sub(request, message_id):
-    user_message = get_object_or_404(new_message, id=message_id)
+    user_message = get_object_or_404(NewMessage, id=message_id)
     
     context = {
         'user_message':user_message
@@ -119,7 +120,7 @@ def download_file(request):
         return HttpResponse("Error fetching the file", status=response.status_code)
 
     # Force the filename to be "ay_react_gallery_image.jpg"
-    filename = "ay_react_img.jpg"
+    filename = "ay-react-img.jpg"
 
     # Prepare the HTTP response with the forced filename and `.jpg` extension
     download_response = HttpResponse(response.content, content_type="image/jpeg")

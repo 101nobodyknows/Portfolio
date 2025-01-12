@@ -20,6 +20,11 @@
             <li><a href="#test">Testimonies</a></li>
             <li class="d-none d-lg-block"><a href="#blog">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
+            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+            <li><a href="/admin/" target="_blank">Admin</a></li>
+            {% endif %}
+            {% endif %}
         </ul>
         <div class="bug">
             <span class="harmbugger"><i class="fa-solid fa-bars"></i></span>
@@ -41,9 +46,13 @@
         <a target="_blank" title="Follow on X" href="{{about.git_link}}"><i class="fa-brands fa-github"></i></a>
         <a target="_blank" title="Follow on Instagram" href="{{about.insta_link}}"><i class="fa-brands fa-instagram"></i></a>
         <a target="_blank" title="Send an Email" href="mailto:{{about.email}}"><i class="fa fa-envelope"></i></a>
-        <a target="_blank" title="Text me on Whatsapp" href="{{about.wa_link}}"><i class="fa-brands fa-whatsapp"></i></a>
+        <a target="_blank" title="Text on Whatsapp" href="{{about.wa_link}}"><i class="fa-brands fa-whatsapp"></i></a>
+        <a target="_blank" title="Call me" href="{{about.phone}}"><i class="fa-solid fa-phone"></i></a>
     </div>
-    <a href="{% url 'project' %}" class="button" title="My Gallery">Visit My Gallery</a>
+    <div class="d-flex">
+        <a href="{% url 'download_file' %}?file_url={{ about.my_cv.url }}" class="button" title="Download CV">Download CV</a>
+        <a href="{% url 'project' %}" class="button mx-3" title="My Gallery">My Gallery</a>
+    </div>
 </div>
 
 <!-- about -->
@@ -57,10 +66,10 @@
         <p class="para">{{about.my_desc}}</p>
         <h1>Interests:</h1>
         <div class="interest">
-            <p class="interests"><i class="fa-solid fa-music"></i>&nbsp;Music</p>
-            <p class="interests"><i class="fa-solid fa-film"></i>&nbsp;Anime</p>
-            <p class="interests"><i class="fa-solid fa-laptop"></i>&nbsp;IT</p>
-            <p class="interests"><i class="fa-solid fa-location"></i>&nbsp;Tourism</p>
+            <p class="interests"><i class="fa fa-code" aria-hidden="true"></i></i>&nbsp;Code</p>
+            <p class="interests"><i class="fa-solid fa-music" aria-hidden="true"></i>&nbsp;Music</p>
+            <p class="interests"><i class="fa fa-network-wired" aria-hidden="true"></i>&nbsp;Web3</p>
+            <p class="interests"><i class="fa fa-suitcase-rolling" aria-hidden="true"></i>&nbsp;Tourism</p>
         </div>
     </div>
 </div>
@@ -70,13 +79,13 @@
     <div class="contents">
         <h1>Education/Work Experience</h1>
     </div>
-    <div class="row mt-1 g-5">
+    <div class="row mt-1 g-lg-5 g-3">
         {% for edu in edu_list %}
         <div class="col-lg-6">
             <div class="rounded-2 bg-none shadow border border-secondary border-2 p-3 pb-0 position-relative">
-                <p class="h5 fw-bold"><i class="fa fa-location-dot" style="color: #0707c7;"></i>&nbsp; {{ edu.location }}</p>
                 <p class="h6 fw-bold"><i class="fa-solid fa-book-open-reader" style="color: #0707c7;"></i>&nbsp; {{ edu.cert }}</p>
-                <p class="text-light"><i class="fa-regular fa-calendar-days" style="color: #0707c7;"></i>&nbsp;<small class="text-light">{{ edu.start_date }}</small> - <small class="text-light edu_end_date">{{ edu.end_date }}</small></p>
+                <p class="h5 fw-bold"><i class="fa fa-location-dot" style="color: #0707c7;"></i>&nbsp; {{ edu.location }}</p>
+                <p class="text-light"><i class="fa-regular fa-calendar-days" style="color: #0707c7;"></i>&nbsp;<small class="text-light">{{ edu.start_date }}</small> - <small class="text-light">{{ edu.end_date }}</small></p>
                 <i class="fa-solid fa-check-to-slot position-absolute top-0 end-0 p-3"></i>
             </div>
         </div>
@@ -210,7 +219,7 @@
     <div class="hire-divi">
         <div class="hire-1">
             <p class="p">Interested in working with me?</p>
-            <p >I'm always ready to serve all clients</p>
+            <p >I'm always ready to serve you.</p>
         </div>
         <button onclick="eMail()" class="button-2">Send an Email</button>
     </div>
@@ -225,7 +234,7 @@
     <div class="divi-box">
         <div class="boxes">
             <div class="boxe">
-                <p>Ayokunnu's graphic design prowess exceeded my expectations, transforming my vision into stunning visuals. Impeccable attention to detail and a creative flair make Abiola a standout graphics designer.</p>
+                <p>Your content management and design skills exceeded my expectations, blending creativity with precision. Your ability to turn ideas into eye-catching visuals makes you a standout professional.</p>
                 <span>Abiola Ismail</span>
             </div>
             <div class="image">
@@ -234,7 +243,7 @@
         </div>
         <div class="boxes">
             <div class="boxe">
-                <p>Working with Ayokunnu, a skilled graphic and web designer, brought seamless, innovative designs and prompt delivery. His expertise elevated my project to new heights through a collaborative approach.</p>
+                <p>Working with you, a skilled graphic and web designer, brought seamless, innovative designs and prompt delivery. Your expertise elevated our project to new heights through a collaborative approach.</p>
                 <span>Sampson Victor</span>
             </div>
             <div class="image">
@@ -279,21 +288,17 @@
 <!--contact -->
 <div class="contact" id="contact">
     <div class="contents">
-            <p>How can you get to me easily</p>
-            <h1>Contact Me</h1>
+            <p>How can you get to me?</p>
+            <h1>Send a Message</h1>
     </div>
     <form action="{% url 'message_sent' %}" method="post">
         {% csrf_token %}
         <div class="form-1">
-            <input type="name" name="name" placeholder ="Name" class="name rounded-2 p-2" required>
-            <input type="email" name="email"placeholder="Email" class="name rounded-2 p-2" required>
+            <input type="name" name="name" placeholder="Your Name" class="name rounded-2 p-2" required>
+            <input type="email" name="email" placeholder="Your Email" class="name rounded-2 p-2" required>
         </div>
         <textarea name="message" rows="6" cols="40" placeholder="Enter your message here" class="mt-2 rounded-2 p-2" required></textarea>
-        <input type="submit" value="Submit" class="button-3">
+        <input type="submit" value="Send" class="button-3">
     </form>
-    <div class="mt-4">
-        <p class="text-white">Call, SMS or Whatsapp: +2347044584688</p>
-        <a href="tel:07044584688" class="button-4"><i class="fa-solid fa-phone"></i>&nbsp;Click to call</a>
-    </div>
 </div>
 {% endblock %}

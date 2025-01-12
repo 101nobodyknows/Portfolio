@@ -1,29 +1,31 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
+# Choices for categories
 category_choice = [
     ('Website', 'Website'),
-    ('Graphics', 'Graphics')
+    ('Graphics', 'Graphics'),
 ]
 
-class new_message(models.Model):
+class NewMessage(models.Model):  # Class names should use PascalCase (best practice)
     name = models.CharField(max_length=30)
     email = models.CharField(max_length=50)
     message = models.TextField()
     
-    def str(self):
+    def __str__(self):  # Fixed the method name to `__str__`
         return self.name
     
-class education(models.Model):
+class Education(models.Model):  # Updated class name for consistency
     location = models.TextField()
     cert = models.TextField()
-    start_date = models.IntegerField()
-    end_date = models.IntegerField(default=True)
+    start_date = models.TextField()
+    end_date = models.TextField(default=True)
     
-    def str(self):
+    def __str__(self):  # Fixed the method name to `__str__`
         return self.cert
     
-class image_gallery(models.Model):
-    main_img = models.ImageField(upload_to="gallery_images/")
+class ImageGallery(models.Model):  # Updated class name for consistency
+    main_img = CloudinaryField('image')  # Replaced with CloudinaryField
     img_name = models.TextField(blank=True)
     img_desc = models.TextField()
     img_category = models.CharField(
@@ -32,18 +34,20 @@ class image_gallery(models.Model):
     )
     img_link = models.TextField(blank=True)
     
-    def str(self):
+    def __str__(self):  # Fixed the method name to `__str__`
         return self.img_name
     
-class about(models.Model):
+class About(models.Model):  # Updated class name for consistency
     name = models.TextField(default="AY_REACT")
     my_desc = models.TextField()
-    my_img = models.ImageField(upload_to="gallery_images/", blank=True)
+    my_img = CloudinaryField('image', blank=True)  # Replaced with CloudinaryField
+    my_cv = CloudinaryField('image', blank=True)  # Replaced with CloudinaryField
     x_link = models.TextField(blank=True)
     git_link = models.TextField(blank=True)
     insta_link = models.TextField(blank=True)
     email = models.TextField(blank=True)
     wa_link = models.TextField(blank=True)
+    phone = models.TextField(blank=True, default='07044584688')
     
-    def str(self):
+    def __str__(self):  # Fixed the method name to `__str__`
         return self.my_desc

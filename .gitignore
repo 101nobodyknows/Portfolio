@@ -1,5 +1,6 @@
 # Virtual environment
 venv/
+my_env/
 
 # Project-specific
 e-comm/

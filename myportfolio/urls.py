@@ -16,8 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ayokunnu.urls'))
 ]
+
+cloudinary.config(
+    cloud_name='dqhdhgig5',
+    api_key='835776861287157',
+    api_secret='8UpUUclWdwDSMBxrwZIL4IXJroA',
+)

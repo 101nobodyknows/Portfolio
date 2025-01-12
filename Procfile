@@ -1,3 +1,1 @@
-web: gunicorn myportfolio.wsgi --log-file - 
-#or works good with external database
-web: python manage.py migrate && gunicorn myportfolio.wsg
+web: gunicorn myportfolio.wsgi:application --bind 0.0.0.0:$PORT
