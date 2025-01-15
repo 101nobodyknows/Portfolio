@@ -22,10 +22,10 @@
             <ul class="ul mx-3">
                   <div class="ul-overlay"></div>
                   <span class="removed p-sm-2"><i class="fa-solid fa-xmark"></i></span>
-                  <li><a href="{% url 'home' %}" class="main">Home</a></li>
+                  <li><a href="{% url 'home' %}" class="link_use">Home</a></li>
                   {% if user.is_authenticated %}
                   {% if user.is_superuser %}
-                  <li><a href="/admin/" target="_blank">Admin</a></li>
+                  <li><a href="/admin/" target="_blank" class="link_use">Admin</a></li>
                   {% endif %}
                   {% endif %}
             </ul>

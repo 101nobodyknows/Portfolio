@@ -177,7 +177,7 @@ body{
     font-weight: 500;
     color: RGB(217 217 217);
     position: relative;
-   display: block;
+   	display: block;
     font-family: 'Baloo Paaji', cursive;
     
 }
@@ -274,9 +274,9 @@ width: 100%;
 	color: var(--new-text-color);
 }
 .content h1{
-	color: var(--new-color);
-	font-family: 'Baloo Paaji', cursive;
-	font-size: 2.2rem;
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: calc(20px + (30 - 20) * ((100vw - 300px) / (1300 - 900)));
 }
 .content h1:nth-child(1){
 	font-size:1.7rem;

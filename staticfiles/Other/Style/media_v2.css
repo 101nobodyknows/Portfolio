@@ -30,10 +30,11 @@
 	top:0;
 	right:0;
 	background:none;
-	width:200px;
+	width:300px;
 	z-index:99;
 	transition: 0.3s;
 	margin-top: 0;
+	padding: 10px 0;
 }
 
 .ul.opened{
@@ -49,8 +50,8 @@
 	}
 	.navbar ul span i{
 		color:whitesmoke;
-		font-size:1.35rem;
-		padding:15px;
+		font-size:1.6rem;
+		padding:8px;
 		cursor:pointer;
 	}
 	.ul-overlay{
@@ -58,7 +59,7 @@
 		width:100%;
 		height:100%;
 		background:black;
-		opacity:0.8;
+		opacity:0.9;
 		z-index:0;
 		border-radius:0 0 0 8px;
 	}
@@ -68,7 +69,7 @@
 	}
 		
 .navbar ul li a{
-	font-size:14px;
+	font-size:20px;
 }
 .about{
 	padding: 6% 4%;

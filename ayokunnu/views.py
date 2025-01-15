@@ -5,6 +5,8 @@ import random
 from django.db.models import Q
 from django.http import HttpResponse
 import requests
+from django.core.mail import send_mail
+from django.conf import settings
 
 #pages
 def home(request):
@@ -92,11 +94,14 @@ def sub_message(request):
         email = request.POST['email']
         message = request.POST['message']
         
+        # Save the message to the database
         new_message = NewMessage.objects.create(name=name, email=email, message=message)
         new_message.save()
-        
+
+        # Redirect to success page
         message_id = new_message.id
-        return redirect(reverse('message_submitted', kwargs={'message_id':message_id}))
+        return redirect(reverse('message_submitted', kwargs={'message_id': message_id}))
+
     return render(request, 'ayokunnu/index.html')
 
 def message_sub(request, message_id):
@@ -106,6 +111,7 @@ def message_sub(request, message_id):
         'user_message':user_message
     }
     return render(request, 'ayokunnu/success.html', context)
+
 
 #download system
 def download_file(request):
