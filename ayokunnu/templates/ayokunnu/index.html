@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
 <!-- header -->
-<div id="header">
+<div id="header" class="py-2 py-lg-0">
     <a href="">
         <span class="logo ">{{about.name}}</span>
     </a>
@@ -14,12 +14,12 @@
         <ul class="ul">
             <div class="ul-overlay"></div>
             <span class="removed"><i class="fa-solid fa-xmark"></i></span>
-            <li><a href="#" class="link_use">Home</a></li>
-            <li><a href="#about" class="link_use">About</a></li>
-            <li><a href="#port" class="link_use">Services</a></li>
-            <li><a href="#test" class="link_use">Testimonies</a></li>
+            <li><a href="#" class="link_use py-1 py-lg-0">Home</a></li>
+            <li><a href="#about" class="link_use py-1 py-lg-0">About</a></li>
+            <li><a href="#port" class="link_use py-1 py-lg-0">Services</a></li>
+            <li><a href="#test" class="link_use py-1 py-lg-0">Testimonies</a></li>
             <li class="d-none d-lg-block"><a href="#blog" class="link_use">Gallery</a></li>
-            <li><a href="#contact" class="link_use">Contact</a></li>
+            <li><a href="#contact" class="link_use py-1 py-lg-0">Contact</a></li>
             {% if user.is_authenticated %}
             {% if user.is_superuser %}
             <li><a href="/admin/" target="_blank" class="link_use">Admin</a></li>
@@ -82,9 +82,9 @@
         {% for edu in edu_list %}
         <div class="col-lg-6">
             <div class="rounded-2 bg-none shadow border border-secondary border-2 p-3 pb-0 position-relative">
-                <p class="h6"><i class="fa-solid fa-book-open-reader" style="color: #0707c7;"></i>&nbsp; {{ edu.cert }}</p>
-                <p class="h6"><i class="fa fa-location-dot" style="color: #0707c7;"></i>&nbsp; {{ edu.location }}</p>
-                <p class="text-light fw-light"><i class="fa-regular fa-calendar-days" style="color: #0707c7;"></i>&nbsp;<small class="text-light">{{ edu.start_date }}</small> - <small class="text-light">{{ edu.end_date }}</small></p>
+                <p class="h6"><i class="fa-solid fa-book-open-reader edu_icon"></i>&nbsp; {{ edu.cert }}</p>
+                <p class="h6"><i class="fa fa-location-dot edu_icon"></i>&nbsp; {{ edu.location }}</p>
+                <p class="text-light fw-light"><i class="fa-regular fa-calendar-days edu_icon"></i>&nbsp;<small class="text-light">{{ edu.start_date }}</small> - <small class="text-light">{{ edu.end_date }}</small></p>
                 <i class="fa-solid fa-check-to-slot position-absolute top-0 end-0 p-lg-3 p-2 py-1"></i>
             </div>
         </div>
